@@ -1,52 +1,465 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Ambulance services in Moscow">
-    <title>Ambulance Moscow</title>
+    <title>Скорая помощь в Москве | Экстренная медицинская помощь</title>
+    <meta name="description" content="Круглосуточная скорая медицинская помощь в Москве. Быстрый выезд, квалифицированные врачи, современное оборудование.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
+        :root {
+            --primary: #e63946;
+            --secondary: #1d3557;
+            --light: #f1faee;
+            --accent: #a8dadc;
+        }
+        
         body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            text-align: center;
-        }
-        header {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
             background-color: #f8f9fa;
-            padding: 20px;
         }
-        header img {
-            max-width: 150px;
+        
+        .hero {
+            background: linear-gradient(rgba(29, 53, 87, 0.8), rgba(29, 53, 87, 0.8)), 
+                        url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            min-height: 70vh;
         }
-        main {
-            padding: 20px;
+        
+        .service-card {
+            transition: all 0.3s ease;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-        .photos img {
-            max-width: 300px;
-            margin: 10px;
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
         }
-        footer {
-            background-color: #f8f9fa;
-            padding: 10px;
-            margin-top: 20px;
+        
+        .emergency-btn {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(230, 57, 70, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(230, 57, 70, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(230, 57, 70, 0);
+            }
+        }
+        
+        .testimonial-card {
+            background-color: white;
+            border-left: 4px solid var(--primary);
+        }
+        
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background-color: var(--accent);
+        }
+        
+        .navbar {
+            transition: all 0.3s ease;
+        }
+        
+        .navbar.scrolled {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        
+        .mobile-menu.open {
+            max-height: 500px;
         }
     </style>
 </head>
 <body>
-    <header>
-        <img src="logo_old.png" alt="Ambulance Moscow Logo">
-        <h1>Welcome to Ambulance Moscow</h1>
-    </header>
-    <main>
-        <p>Providing emergency medical services in Moscow. Visit our <a href="https://ambulance.ru/" target="_blank">official website</a> for more information.</p>
-        <div class="photos">
-            <img src="p01.jpg" alt="Ambulance Photo 1">
-            <img src="p02.jpg" alt="Ambulance Photo 2">
+    <!-- Navigation -->
+    <nav class="navbar fixed w-full z-50">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <a href="#" class="text-2xl font-bold text-white">
+                        <span class="text-red-500">Скорая</span>
+                        <span class="text-blue-800">Помощь</span>
+                    </a>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-6 whitespace-nowrap">
+                    <a href="#services" class="text-white hover:text-red-300 font-medium px-2">Услуги</a>
+                    <a href="#about" class="text-white hover:text-red-300 font-medium px-2">О нас</a>
+                    <a href="#pricing" class="text-white hover:text-red-300 font-medium px-2">Цены</a>
+                    <a href="#testimonials" class="text-white hover:text-red-300 font-medium px-2">Отзывы</a>
+                    <a href="#contact" class="text-white hover:text-red-300 font-medium px-2">Контакты</a>
+                </div>
+                
+                <div class="hidden md:block whitespace-nowrap ml-4">
+                    <a href="tel:+74951234567" class="bg-red-500 hover:bg-red-600 text-white px-5 py-3 rounded-full font-medium transition duration-300 text-sm md:text-base">
+                        <i class="fas fa-phone mr-2"></i>+7 (495) 123-45-67
+                    </a>
+                </div>
+                
+                <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+            
+            <div id="mobile-menu" class="mobile-menu md:hidden bg-white rounded-lg mt-2">
+                <div class="px-2 pt-2 pb-4 space-y-1">
+                    <a href="#services" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100">Услуги</a>
+                    <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100">О нас</a>
+                    <a href="#pricing" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100">Цены</a>
+                    <a href="#testimonials" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100">Отзывы</a>
+                    <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100">Контакты</a>
+                    <a href="tel:+74951234567" class="block px-3 py-3 rounded-md text-base font-medium bg-red-500 text-white text-center whitespace-nowrap">
+                        <i class="fas fa-phone mr-2"></i>+7 (495) 123-45-67
+                    </a>
+                </div>
+            </div>
         </div>
-    </main>
-    <footer>
-        <p>&copy; 2025 Ambulance Moscow. All rights reserved.</p>
-    </footer>
-</body>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero flex items-center justify-center text-white pt-20">
+        <div class="container mx-auto px-4 py-20 text-center">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6">Круглосуточная скорая помощь в Москве</h1>
+            <p class="text-xl md:text-2xl mb-10 max-w-3xl mx-auto">Профессиональная медицинская помощь в любое время суток. Быстрый выезд, квалифицированные врачи, современное оборудование.</p>
+            
+            <div class="flex flex-col md:flex-row justify-center gap-4">
+                <a href="tel:+74951234567" class="emergency-btn bg-red-500 hover:bg-red-600 text-white px-8 py-4 rounded-full text-xl font-bold transition duration-300">
+                    <i class="fas fa-ambulance mr-3"></i>Экстренный вызов
+                </a>
+                <a href="#contact" class="bg-white text-blue-800 hover:bg-gray-100 px-8 py-4 rounded-full text-xl font-bold transition duration-300">
+                    <i class="fas fa-calendar-alt mr-3"></i>Заказать обратный звонок
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-blue-800">Наши услуги</h2>
+            <p class="text-center text-gray-600 max-w-2xl mx-auto mb-16">Мы предоставляем полный спектр услуг скорой медицинской помощи</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="service-card bg-white">
+                    <div class="p-6">
+                        <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mb-4">
+                            <i class="fas fa-heartbeat text-red-500 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Экстренная помощь</h3>
+                        <p class="text-gray-600">Немедленный выезд бригады скорой помощи при острых состояниях, травмах, несчастных случаях.</p>
+                    </div>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="service-card bg-white">
+                    <div class="p-6">
+                        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                            <i class="fas fa-procedures text-blue-500 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Транспортировка</h3>
+                        <p class="text-gray-600">Безопасная перевозка пациентов в медицинские учреждения с сопровождением врача.</p>
+                    </div>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="service-card bg-white">
+                    <div class="p-6">
+                        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-4">
+                            <i class="fas fa-user-md text-green-500 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Консультации врача</h3>
+                        <p class="text-gray-600">Квалифицированные консультации по телефону и на дому для определения необходимой помощи.</p>
+                    </div>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="service-card bg-white">
+                    <div class="p-6">
+                        <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mb-4">
+                            <i class="fas fa-home text-purple-500 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Домашний визит</h3>
+                        <p class="text-gray-600">Выезд врача на дом для осмотра, диагностики и назначения лечения.</p>
+                    </div>
+                </div>
+                
+                <!-- Service 5 -->
+                <div class="service-card bg-white">
+                    <div class="p-6">
+                        <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mb-4">
+                            <i class="fas fa-baby text-yellow-500 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Педиатрическая помощь</h3>
+                        <p class="text-gray-600">Специализированная помощь детям с выездом педиатра на дом.</p>
+                    </div>
+                </div>
+                
+                <!-- Service 6 -->
+                <div class="service-card bg-white">
+                    <div class="p-6">
+                        <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mb-4">
+                            <i class="fas fa-notes-medical text-indigo-500 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Медицинские процедуры</h3>
+                        <p class="text-gray-600">Проведение инъекций, капельниц, перевязок и других медицинских процедур на дому.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row items-center">
+                <div class="lg:w-1/2 mb-10 lg:mb-0 lg:pr-10">
+                    <img src="https://images.unsplash.com/photo-1581056771107-24ca5f033842?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                         alt="Медицинская бригада" 
+                         class="rounded-lg shadow-xl w-full">
+                </div>
+                <div class="lg:w-1/2">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6 text-blue-800">О нашей службе</h2>
+                    <p class="text-gray-600 mb-6">Наша служба скорой медицинской помощи работает в Москве более 10 лет, предоставляя качественные медицинские услуги круглосуточно.</p>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-check text-red-500"></i>
+                                </div>
+                            </div>
+                            <div class="ml-3">
+                                <p class="text-gray-800 font-medium">Квалифицированные специалисты</p>
+                                <p class="text-gray-600">Все наши врачи имеют высшее медицинское образование и многолетний опыт работы.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-check text-blue-500"></i>
+                                </div>
+                            </div>
+                            <div class="ml-3">
+                                <p class="text-gray-800 font-medium">Современное оборудование</p>
+                                <p class="text-gray-600">Автомобили скорой помощи оснащены всем необходимым для оказания экстренной медицинской помощи.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-check text-green-500"></i>
+                                </div>
+                            </div>
+                            <div class="ml-3">
+                                <p class="text-gray-800 font-medium">Быстрое реагирование</p>
+                                <p class="text-gray-600">Среднее время прибытия бригады в пределах МКАД - 15-20 минут.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="#contact" class="mt-8 inline-block bg-blue-800 hover:bg-blue-900 text-white px-6 py-3 rounded-lg font-medium transition duration-300">
+                        Связаться с нами
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-blue-800">Наши цены</h2>
+            <p class="text-center text-gray-600 max-w-2xl mx-auto mb-16">Прозрачное ценообразование без скрытых платежей</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <!-- Basic Plan -->
+                <div class="service-card bg-gray-50 border border-gray-200">
+                    <div class="p-8 text-center">
+                        <h3 class="text-xl font-bold mb-4">Базовая помощь</h3>
+                        <div class="text-4xl font-bold mb-6 text-blue-800">3 500 ₽</div>
+                        <ul class="space-y-3 mb-8 text-gray-600">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span>Выезд врача на дом</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span>Осмотр и консультация</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span>ЭКГ при необходимости</span>
+                            </li>
+                            <li class="flex items-center text-gray-400">
+                                <i class="fas fa-times text-red-400 mr-2"></i>
+                                <span>Транспортировка</span>
+                            </li>
+                        </ul>
+                        <a href="tel:+74951234567" class="block w-full bg-gray-200 hover:bg-gray-300 text-gray-800 py-3 rounded-lg font-medium transition duration-300">
+                            Заказать
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Popular Plan -->
+                <div class="service-card bg-blue-800 text-white transform scale-105 relative">
+                    <div class="absolute top-0 right-0 bg-red-500 text-white px-3 py-1 text-sm font-bold rounded-bl-lg">
+                        Популярный
+                    </div>
+                    <div class="p-8 text-center">
+                        <h3 class="text-xl font-bold mb-4">Стандартная помощь</h3>
+                        <div class="text-4xl font-bold mb-6">5 900 ₽</div>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-300 mr-2"></i>
+                                <span>Выезд врача на дом</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-300 mr-2"></i>
+                                <span>Полный осмотр</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-300 mr-2"></i>
+                                <span>ЭКГ и экспресс-анализы</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-300 mr-2"></i>
+                                <span>Транспортировка до клиники</span>
+                            </li>
+                        </ul>
+                        <a href="tel:+74951234567" class="block w-full bg-white hover:bg-gray-100 text-blue-800 py-3 rounded-lg font-medium transition duration-300">
+                            Заказать
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Premium Plan -->
+                <div class="service-card bg-gray-50 border border-gray-200">
+                    <div class="p-8 text-center">
+                        <h3 class="text-xl font-bold mb-4">Премиум помощь</h3>
+                        <div class="text-4xl font-bold mb-6 text-blue-800">9 900 ₽</div>
+                        <ul class="space-y-3 mb-8 text-gray-600">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span>Выезд врача высшей категории</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span>Полное обследование</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span>Все необходимые процедуры</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span>Транспортировка + сопровождение</span>
+                            </li>
+                        </ul>
+                        <a href="tel:+74951234567" class="block w-full bg-gray-200 hover:bg-gray-300 text-gray-800 py-3 rounded-lg font-medium transition duration-300">
+                            Заказать
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <p class="text-gray-600 mb-4">* Точная стоимость может варьироваться в зависимости от сложности случая и удаленности адреса.</p>
+                <a href="#contact" class="text-blue-800 hover:text-blue-600 font-medium underline">Уточнить стоимость для вашего случая</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-blue-800">Отзывы наших клиентов</h2>
+            <p class="text-center text-gray-600 max-w-2xl mx-auto mb-16">Что говорят люди, которым мы помогли</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card p-6 rounded-lg shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gray-200 rounded-full overflow-hidden mr-4">
+                            <img src="https://randomuser.me/api/portraits/women/43.jpg" alt="Анна С." class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Анна С.</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"Вызывали скорую для отца, у которого резко поднялось давление. Врач приехал через 15 минут, профессионально оказал помощь, дал рекомендации. Очень благодарны!"</p>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card p-6 rounded-lg shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gray-200 rounded-full overflow-hidden mr-4">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Дмитрий К." class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Дмитрий К.</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"Ребенок упал с велосипеда, сильно ударился головой. Бригада приехала очень быстро, осмотрели, успокоили, сделали все необходимые процедуры. Спасибо за оперативность!"</p>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card p-6 rounded-lg shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gray-200 rounded-full overflow-hidden mr-4">
+                            <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Елена П." class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Елена П.</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"Ночью у мужа начались сильные боли в животе. Вызвали скорую, врач быстро поставил диагноз (оказался аппендицит) и организовал госпитализацию. Все прошло хорошо, спасибо!"</p>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <a href="#" class="inline-block bg-white hover:bg-gray-100 text-blue-
 </html>
