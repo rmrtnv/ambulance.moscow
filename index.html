@@ -24,9 +24,10 @@
         
         .hero {
             background: linear-gradient(rgba(29, 53, 87, 0.8), rgba(29, 53, 87, 0.8)), 
-                        url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+                        url('hero01.jpg');
             background-size: cover;
             background-position: center;
+            max-height: 640px;
             min-height: 70vh;
         }
         
@@ -137,10 +138,10 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero flex items-center justify-center text-white pt-20">
+    <section class="hero flex items-center justify-center text-white pt-20" style="max-height: 640px; height: 640px; overflow: hidden;">
         <div class="container mx-auto px-4 py-20 text-center">
-            <h1 class="text-4xl md:text-6xl font-bold mb-6">Круглосуточная скорая помощь в Москве</h1>
-            <p class="text-xl md:text-2xl mb-10 max-w-3xl mx-auto">Профессиональная медицинская помощь в любое время суток. Быстрый выезд, квалифицированные врачи, современное оборудование.</p>
+            <h1 class="text-4xl md:text-6xl font-bold mb-6">Транспортная компания Альянс-М</h1>
+            <p class="text-xl md:text-2xl mb-10 max-w-3xl mx-auto">Компания Альянс-М надежный поставщик предоставляющий широкий спектр транспортных услуг в сфере здравоохранения Москвы, МО и ближайших регионах Российской Федерации.</p>
             
             <div class="flex flex-col md:flex-row justify-center gap-4">
                 <a href="tel:+74951234567" class="emergency-btn bg-red-500 hover:bg-red-600 text-white px-8 py-4 rounded-full text-xl font-bold transition duration-300">
@@ -234,16 +235,21 @@
         <div class="container mx-auto px-4">
             <div class="flex flex-col lg:flex-row items-center">
                 <div class="lg:w-1/2 mb-10 lg:mb-0 lg:pr-10">
-                    <img src="p01.jpg" 
-                         alt="Медицинская бригада" 
-                         class="rounded-lg shadow-xl w-full mb-6">
-                    <img src="p02.jpg" 
-                         alt="Медицинская бригада" 
-                         class="rounded-lg shadow-xl w-full">
+                    <div style="max-height: 640px; overflow: hidden;" class="mb-6 rounded-lg shadow-xl">
+                        <img src="hero01.jpg" 
+                             alt="Транспортная компания" 
+                             class="w-full h-auto object-cover" style="max-height: 640px;">
+                    </div>
+                    <div style="max-height: 350px; overflow: hidden;" class="rounded-lg shadow-xl">
+                        <img src="hero02.jpg" 
+                             alt="Транспортная компания" 
+                             class="w-full h-auto object-cover" style="max-height: 350px;">
+                    </div>
                 </div>
                 <div class="lg:w-1/2">
                     <h2 class="text-3xl md:text-4xl font-bold mb-6 text-blue-800">О нашей службе</h2>
-                    <p class="text-gray-600 mb-6">Мы предлагаем широкий спектр услуг санитарного транспорта, включая перевозку пациентов, тела умерших, а также специализированный транспорт для реанимации и трансплантологии. Мы обеспечиваем высокое качество обслуживания и безопасность на каждом этапе. Наш автопарк включает специализированные автомобили для различных задач:</p>
+                    <p class="text-gray-600 mb-6">Мы предлагаем широкий спектр услуг санитарного транспорта, включая перевозку пациентов, тела умерших, а также специализированный транспорт для реанимации и трансплантологии.</p>
+                    <p class="text-gray-600 mb-6">Мы обеспечиваем высокое качество обслуживания и безопасность на каждом этапе.</p>
                     
                     <div class="space-y-4">
                         <br><br>
