@@ -24,7 +24,7 @@
         
         .hero {
             background: linear-gradient(rgba(29, 53, 87, 0.8), rgba(29, 53, 87, 0.8)), 
-                        url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+                        url('hero01.jpg');
             background-size: cover;
             background-position: center;
             min-height: 70vh;
@@ -137,10 +137,12 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero flex items-center justify-center text-white pt-20">
-        <div class="container mx-auto px-4 py-20 text-center">
-            <h1 class="text-4xl md:text-6xl font-bold mb-6">Круглосуточная скорая помощь в Москве</h1>
-            <p class="text-xl md:text-2xl mb-10 max-w-3xl mx-auto">Профессиональная медицинская помощь в любое время суток. Быстрый выезд, квалифицированные врачи, современное оборудование.</p>
+    <section class="hero flex flex-col items-center justify-center text-white pt-20">
+        <div class="container mx-auto px-4 py-20 text-center h-screen">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6">Транспортная компания<br>Альянс-М</h1>
+            <p class="text-xl md:text-2xl mb-10 max-w-3xl mx-auto">
+                <span class="font-medium">Компания Альянс-М</span> надежный поставщик предоставляющий широкий спектр транспортных услуг в сфере здравоохранения Москвы, МО и ближайших регионах Российской Федерации.
+            </p>
             
             <div class="flex flex-col md:flex-row justify-center gap-4">
                 <a href="tel:+74951234567" class="emergency-btn bg-red-500 hover:bg-red-600 text-white px-8 py-4 rounded-full text-xl font-bold transition duration-300">
@@ -151,78 +153,137 @@
                 </a>
             </div>
         </div>
+        
+        <div class="w-full bg-cover bg-center min-h-[300px] relative" style="background-image: url('hero02.jpg');">
+            <div class="absolute inset-0 bg-black bg-opacity-60"></div>
+            <div class="container mx-auto px-4 py-8 text-center relative z-10">
+                <p class="text-xl md:text-2xl mb-4 max-w-3xl mx-auto">
+                    Мы предлагаем широкий спектр услуг санитарного транспорта, включая перевозку пациентов, тела умерших, а также специализированный транспорт для реанимации и трансплантологии.
+                </p>
+                <p class="text-xl md:text-2xl max-w-3xl mx-auto">
+                    Мы обеспечиваем высокое качество обслуживания и безопасность на каждом этапе.
+                </p>
+            </div>
+        </div>
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="py-20 bg-white">
+    <section id="services" class="py-12 bg-white">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-blue-800">Наши услуги</h2>
-            <p class="text-center text-gray-600 max-w-2xl mx-auto mb-16">Мы предоставляем полный спектр услуг скорой медицинской помощи</p>
+            <h2 class="text-2xl md:text-3xl font-bold text-center mb-8 text-gray-800">НАШИ УСЛУГИ</h2>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-12">
                 <!-- Service 1 -->
-                <div class="service-card bg-white">
-                    <div class="p-6">
-                        <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mb-4">
-                            <i class="fas fa-heartbeat text-red-500 text-2xl"></i>
-                        </div>
-                        <h3 class="text-xl font-bold mb-3">Экстренная помощь</h3>
-                        <p class="text-gray-600">Немедленный выезд бригады скорой помощи при острых состояниях, травмах, несчастных случаях.</p>
+                <div class="bg-[#F3F4F9] rounded-2xl p-6 flex flex-col items-center justify-center transition-transform hover:-translate-y-1">
+                    <div class="w-12 h-12 bg-[#E1F5E9] rounded-full flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" stroke-width="2"/>
+                            <path d="M8 12H16M12 8V16" stroke="currentColor" stroke-width="2"/>
+                        </svg>
                     </div>
+                    <h3 class="text-lg font-medium text-gray-700 text-center">Санитарный транспорт</h3>
                 </div>
                 
                 <!-- Service 2 -->
-                <div class="service-card bg-white">
-                    <div class="p-6">
-                        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4">
-                            <i class="fas fa-procedures text-blue-500 text-2xl"></i>
-                        </div>
-                        <h3 class="text-xl font-bold mb-3">Транспортировка</h3>
-                        <p class="text-gray-600">Безопасная перевозка пациентов в медицинские учреждения с сопровождением врача.</p>
+                <div class="bg-[#F3F4F9] rounded-2xl p-6 flex flex-col items-center justify-center transition-transform hover:-translate-y-1">
+                    <div class="w-12 h-12 bg-[#E1F1FF] rounded-full flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z" stroke="currentColor" stroke-width="2"/>
+                            <path d="M19 12C19 11.1716 18.8283 10.3718 18.5 9.63803C17.9179 8.33203 16.9179 7.33203 15.6679 6.75C14.9341 6.42165 14.1343 6.25 13.306 6.25H10.694C9.86567 6.25 9.06589 6.42165 8.33205 6.75C7.08205 7.33203 6.08205 8.33203 5.5 9.63803C5.17165 10.3718 5 11.1716 5 12C5 12.8284 5.17165 13.6282 5.5 14.362C6.08205 15.668 7.08205 16.668 8.33205 17.25C9.06589 17.5784 9.86567 17.75 10.694 17.75H13.306C14.1343 17.75 14.9341 17.5784 15.6679 17.25C16.9179 16.668 17.9179 15.668 18.5 14.362C18.8283 13.6282 19 12.8284 19 12Z" stroke="currentColor" stroke-width="2"/>
+                        </svg>
                     </div>
+                    <h3 class="text-lg font-medium text-gray-700 text-center">Перевозка тел умерших</h3>
                 </div>
                 
                 <!-- Service 3 -->
-                <div class="service-card bg-white">
-                    <div class="p-6">
-                        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-4">
-                            <i class="fas fa-user-md text-green-500 text-2xl"></i>
-                        </div>
-                        <h3 class="text-xl font-bold mb-3">Консультации врача</h3>
-                        <p class="text-gray-600">Квалифицированные консультации по телефону и на дому для определения необходимой помощи.</p>
+                <div class="bg-[#F3F4F9] rounded-2xl p-6 flex flex-col items-center justify-center transition-transform hover:-translate-y-1">
+                    <div class="w-12 h-12 bg-[#FFE9E9] rounded-full flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3.5 12H6.5L9.5 19L14.5 5L17.5 12H20.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
                     </div>
+                    <h3 class="text-lg font-medium text-gray-700 text-center">Реанимационный транспорт</h3>
                 </div>
                 
                 <!-- Service 4 -->
-                <div class="service-card bg-white">
-                    <div class="p-6">
-                        <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mb-4">
-                            <i class="fas fa-home text-purple-500 text-2xl"></i>
+                <div class="bg-[#F3F4F9] rounded-2xl p-6 flex flex-col items-center justify-center transition-transform hover:-translate-y-1">
+                    <div class="w-12 h-12 bg-[#FEFFD8] rounded-full flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" stroke-width="2"/>
+                            <path d="M15 9L9 15M9 9L15 15" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-medium text-gray-700 text-center">Транспорт для трансплантологии</h3>
+                </div>
+            </div>
+
+            <!-- Detailed Services -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+                <!-- Detailed Service 1 -->
+                <div class="flex gap-4 items-start">
+                    <div class="w-32 h-24 flex-shrink-0">
+                        <img src="serv01.jpg" alt="Санитарный транспорт" class="w-full h-full object-cover rounded-lg">
+                    </div>
+                    <div class="flex-grow">
+                        <div class="space-y-1">
+                            <p class="text-sm text-gray-700">Перевозка пациентов с различными медицинскими состояниями</p>
+                            <p class="text-sm text-gray-700">Оборудованные автомобили с необходимым медицинским оборудованием</p>
+                            <p class="text-sm text-gray-700">Команда опытных медицинских специалистов</p>
                         </div>
-                        <h3 class="text-xl font-bold mb-3">Домашний визит</h3>
-                        <p class="text-gray-600">Выезд врача на дом для осмотра, диагностики и назначения лечения.</p>
+                        <button class="mt-3 bg-red-500 text-white px-4 py-1 text-sm rounded-full hover:bg-red-600 transition-colors">
+                            Прейскурант на услуги
+                        </button>
                     </div>
                 </div>
-                
-                <!-- Service 5 -->
-                <div class="service-card bg-white">
-                    <div class="p-6">
-                        <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mb-4">
-                            <i class="fas fa-baby text-yellow-500 text-2xl"></i>
+
+                <!-- Detailed Service 2 -->
+                <div class="flex gap-4 items-start">
+                    <div class="w-32 h-24 flex-shrink-0">
+                        <img src="serv02.jpg" alt="Перевозка тел умерших" class="w-full h-full object-cover rounded-lg">
+                    </div>
+                    <div class="flex-grow">
+                        <div class="space-y-1">
+                            <p class="text-sm text-gray-700">Уважительное обращение с усопшими</p>
+                            <p class="text-sm text-gray-700">Оформление всех необходимых документов</p>
+                            <p class="text-sm text-gray-700">Перевозка в соответствии с санитарными нормами</p>
                         </div>
-                        <h3 class="text-xl font-bold mb-3">Педиатрическая помощь</h3>
-                        <p class="text-gray-600">Специализированная помощь детям с выездом педиатра на дом.</p>
+                        <button class="mt-3 bg-red-500 text-white px-4 py-1 text-sm rounded-full hover:bg-red-600 transition-colors">
+                            Прейскурант на услуги
+                        </button>
                     </div>
                 </div>
-                
-                <!-- Service 6 -->
-                <div class="service-card bg-white">
-                    <div class="p-6">
-                        <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mb-4">
-                            <i class="fas fa-notes-medical text-indigo-500 text-2xl"></i>
+
+                <!-- Detailed Service 3 -->
+                <div class="flex gap-4 items-start">
+                    <div class="w-32 h-24 flex-shrink-0">
+                        <img src="serv03.jpg" alt="Реанимационный транспорт" class="w-full h-full object-cover rounded-lg">
+                    </div>
+                    <div class="flex-grow">
+                        <div class="space-y-1">
+                            <p class="text-sm text-gray-700">Экстренная перевозка пациентов в критическом состоянии</p>
+                            <p class="text-sm text-gray-700">Полное медицинское оборудование для реанимации</p>
+                            <p class="text-sm text-gray-700">Квалифицированный медперсонал на борту</p>
                         </div>
-                        <h3 class="text-xl font-bold mb-3">Медицинские процедуры</h3>
-                        <p class="text-gray-600">Проведение инъекций, капельниц, перевязок и других медицинских процедур на дому.</p>
+                        <button class="mt-3 bg-red-500 text-white px-4 py-1 text-sm rounded-full hover:bg-red-600 transition-colors">
+                            Прейскурант на услуги
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Detailed Service 4 -->
+                <div class="flex gap-4 items-start">
+                    <div class="w-32 h-24 flex-shrink-0">
+                        <img src="serv02.jpg" alt="Транспорт для трансплантологии" class="w-full h-full object-cover rounded-lg">
+                    </div>
+                    <div class="flex-grow">
+                        <div class="space-y-1">
+                            <p class="text-sm text-gray-700">Перевозка органов и тканей для трансплантации</p>
+                            <p class="text-sm text-gray-700">Специализированные условия для сохранения целостности и качества органов</p>
+                            <p class="text-sm text-gray-700">Сотрудничество с медицинскими учреждениями и банками органов</p>
+                        </div>
+                        <button class="mt-3 bg-red-500 text-white px-4 py-1 text-sm rounded-full hover:bg-red-600 transition-colors">
+                            Прейскурант на услуги
+                        </button>
                     </div>
                 </div>
             </div>
